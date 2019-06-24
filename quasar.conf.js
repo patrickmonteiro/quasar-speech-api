@@ -38,7 +38,9 @@ module.exports = function (ctx) {
         'QItemSection',
         'QItemLabel',
         'QInput',
-        'QSelect'
+        'QSelect',
+        'QSpinnerBars',
+        'QSpinnerComment'
       ],
 
       directives: [
@@ -47,7 +49,8 @@ module.exports = function (ctx) {
 
       // Quasar plugins
       plugins: [
-        'Notify'
+        'Notify',
+        'Loading'
       ]
 
       // iconSet: 'ionicons-v4'

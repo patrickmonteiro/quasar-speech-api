@@ -67,6 +67,11 @@ export default {
       console.log(teste.getVoices())
     },
     playAudio () {
+      // this.$q.loading.show({
+      //   delay: 400,
+      //   spinner: 'QSpinnerComment', // ms,
+      //   backgroundColor: 'blue-8'
+      // })
       let speech = new SpeechSynthesisUtterance()
       // Set the text and voice attributes.
       speech.lang = this.voiceSelect
@@ -77,6 +82,11 @@ export default {
       window.speechSynthesis.speak(speech)
     },
     record () {
+      this.$q.loading.show({
+        delay: 400,
+        spinner: 'QSpinnerBars', // ms,
+        backgroundColor: 'blue-8'
+      })
       let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
       let recognition = SpeechRecognition ? new SpeechRecognition() : false
       recognition.lang = this.voiceSelect
@@ -95,6 +105,7 @@ export default {
 
       recognition.onend = () => {
         this.noteContent = ''
+        this.$q.loading.hide()
       }
     }
   },
