@@ -67,51 +67,14 @@ export default {
       console.log(teste.getVoices())
     },
     playAudio () {
-      // this.$q.loading.show({
-      //   delay: 400,
-      //   spinner: 'QSpinnerComment', // ms,
-      //   backgroundColor: 'blue-8'
-      // })
-      let speech = new SpeechSynthesisUtterance()
-      // Set the text and voice attributes.
-      speech.lang = this.voiceSelect
-      speech.text = this.text
-      speech.volume = 1
-      speech.rate = 1
-      speech.pitch = 1
-      window.speechSynthesis.speak(speech)
+      this.$speechTalk(this.voiceSelect, this.text)
     },
     record () {
-      this.$q.loading.show({
-        delay: 400,
-        spinner: 'QSpinnerBars', // ms,
-        backgroundColor: 'blue-8'
-      })
-      let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
-      let recognition = SpeechRecognition ? new SpeechRecognition() : false
-      recognition.lang = this.voiceSelect
-      recognition.start()
-
-      recognition.onresult = (event) => {
-        let current = event.resultIndex
-
-        // Get a transcript of what was said.
-        let transcript = event.results[current][0].transcript
-
-        // Add the current transcript to the contents of our Note.
-        // var noteContent += transcript
-        this.text += transcript
-      }
-
-      recognition.onend = () => {
-        this.noteContent = ''
-        this.$q.loading.hide()
-      }
+      this.$speechToText(this.voiceSelect)
+        .then((suc) => {
+          this.text = suc
+        })
     }
-  },
-  start () {
-    this.recognition.start()
-    // this.recognition.lang = 'en-US'
   }
 }
 </script>
