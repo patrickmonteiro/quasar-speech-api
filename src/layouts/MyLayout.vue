@@ -27,6 +27,24 @@
     >
       <q-list>
         <q-item-label header>Essential Links</q-item-label>
+        <q-item clickable to="/" exact>
+          <q-item-section avatar>
+            <q-icon name="home" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Home</q-item-label>
+            <q-item-label caption></q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item clickable to="/cadastro">
+          <q-item-section avatar>
+            <q-icon name="settings_voice" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Cadastro Speech</q-item-label>
+            <q-item-label caption>cadastro por voz</q-item-label>
+          </q-item-section>
+        </q-item>
         <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
           <q-item-section avatar>
             <q-icon name="school" />
