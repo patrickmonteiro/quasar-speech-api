@@ -13,10 +13,10 @@
         </q-btn>
 
         <q-toolbar-title>
-          Quasar App
+          Quasar Speech
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div>Versão: {{ version_qspeech }}</div>
       </q-toolbar>
     </q-header>
 
@@ -24,7 +24,10 @@
       v-model="leftDrawerOpen"
       bordered
       content-class="bg-grey-2"
+      :breakpoint="400"
+      show-if-above
     >
+    <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
       <q-list>
         <q-item-label header>Essential Links</q-item-label>
         <q-item clickable to="/" exact>
@@ -50,47 +53,28 @@
             <q-icon name="school" />
           </q-item-section>
           <q-item-section>
-            <q-item-label>Docs</q-item-label>
+            <q-item-label>Conheça o Quasar Framework</q-item-label>
             <q-item-label caption>quasar.dev</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://github.com/quasarframework/">
-          <q-item-section avatar>
-            <q-icon name="code" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Github</q-item-label>
-            <q-item-label caption>github.com/quasarframework</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://chat.quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="chat" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Discord Chat Channel</q-item-label>
-            <q-item-label caption>chat.quasar.dev</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://forum.quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="record_voice_over" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Forum</q-item-label>
-            <q-item-label caption>forum.quasar.dev</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://twitter.com/quasarframework">
-          <q-item-section avatar>
-            <q-icon name="rss_feed" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Twitter</q-item-label>
-            <q-item-label caption>@quasarframework</q-item-label>
-          </q-item-section>
-        </q-item>
       </q-list>
+    </q-scroll-area>
+       <q-img class="absolute-top" src="statics/fundo-menu.jpg" style="height: 150px">
+          <div class="absolute-bottom bg-transparent">
+            <q-avatar size="56px" class="q-mb-sm">
+              <img src="statics/patrick.jpg">
+            </q-avatar>
+            <div class="text-weight-bold">Patrick Monteiro</div>
+            <div class="q-gutter-sm">
+              <q-btn dense color="white" text-color="primary" round size="sm" icon="fab fa-github"
+              type="a" href="https://github.com/patrickmonteiro/quasar-speech-api" target="_blank" />
+              <q-btn dense color="white" text-color="primary" round size="sm" icon="fab fa-linkedin-in"
+              type="a" href="https://www.linkedin.com/in/engpatrickmonteiro/" target="_blank" />
+              <q-btn dense color="white" text-color="primary" round size="sm" icon="fab fa-twitter"
+              type="a" href="https://twitter.com/monteiropatrick" target="_blank" />
+            </div>
+          </div>
+        </q-img>
     </q-drawer>
 
     <q-page-container>
@@ -106,7 +90,8 @@ export default {
   name: 'MyLayout',
   data () {
     return {
-      leftDrawerOpen: this.$q.platform.is.desktop
+      leftDrawerOpen: this.$q.platform.is.desktop,
+      version_qspeech: process.env.VERSION_QSPEECH
     }
   },
   methods: {

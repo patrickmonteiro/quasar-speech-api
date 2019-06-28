@@ -11,7 +11,7 @@ export default async ({ Vue }) => {
       speech.pitch = 1
       setTimeout(() => {
         window.speechSynthesis.speak(speech)
-      }, 200)
+      }, 300)
 
       speech.addEventListener('start', () => {
         Loading.show({

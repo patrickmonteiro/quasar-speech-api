@@ -24,9 +24,23 @@
         <div class="col-12 q-pa-xl">
           <q-input
             v-model="text"
-            filled
-            type="textarea"
-          />
+            autogrow
+            label="Texto"
+            clearable
+            outlined/>
+        </div>
+        <div class="col-12 q-ma-sm text-caption">
+          <div class="text-bold">Instruções:</div>
+          <div>Escolha seu idioma para que o assistente escreva corretamente sua falar.</div>
+          <div>Aperte no botão de microfone
+             <q-btn dense color="primary" round size="xs" icon="keyboard_voice" />
+             para iniciar a captura de fala, e autorize seu dispositivo a utilizar o microfone.
+          </div>
+          <div>
+            Ao aparecer a tela com a mensagem "Aguardando Áudio" diga a frase que deseja que seja transcrita.<br>
+            Ao finalizar, sua fala aparecerar no campo de Texto.
+          </div>
+          <div>Caso queira ouvir o texto, basta apertar no botão de play <q-btn dense color="primary" round size="xs" icon="play_arrow" />. </div>
         </div>
       </div>
   </q-page>
@@ -50,7 +64,6 @@ export default {
   },
   methods: {
     setVoices () {
-      console.log(this.optionsVoice.length)
       let id = setInterval(() => {
         if (this.optionsVoice.length === 0) {
           this.voicesList()
@@ -64,7 +77,6 @@ export default {
       this.optionsVoice = teste.getVoices().map(voice => ({
         label: voice.name, value: voice.lang
       }))
-      console.log(teste.getVoices())
     },
     playAudio () {
       this.$speechTalk(this.voiceSelect, this.text)

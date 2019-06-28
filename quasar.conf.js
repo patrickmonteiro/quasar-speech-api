@@ -14,10 +14,10 @@ module.exports = function (ctx) {
 
     extras: [
       'roboto-font',
-      'material-icons' // optional, you are not bound to it
-      // 'ionicons-v4',
+      'material-icons', // optional, you are not bound to it
+      'fontawesome-v5'
+      // 'ionicons-v4'
       // 'mdi-v3',
-      // 'fontawesome-v5',
       // 'eva-icons'
     ],
 
@@ -41,7 +41,11 @@ module.exports = function (ctx) {
         'QInput',
         'QSelect',
         'QSpinnerBars',
-        'QSpinnerComment'
+        'QSpinnerComment',
+        'QBadge',
+        'QImg',
+        'QAvatar',
+        'QScrollArea'
       ],
 
       directives: [
@@ -74,7 +78,14 @@ module.exports = function (ctx) {
           loader: 'eslint-loader',
           exclude: /node_modules/
         })
+      },
+      env: ctx.dev 
+      ? {
+        VERSION_QSPEECH: JSON.stringify(require('./package.json').version)
       }
+      : {
+        VERSION_QSPEECH: JSON.stringify(require('./package.json').version)
+      },
     },
 
     devServer: {
