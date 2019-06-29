@@ -1,6 +1,8 @@
 # Quasar + Speech API 🎤 🔉 
 
-Projeto de um PWA desenvolvido com Quasar Framework + Speech API para capturar áudio e transformar em texto, ou utilizar um texto como base para a aplicação emitir um áudio.
+Projeto de uma SPA desenvolvido com Quasar Framework + Speech API para capturar áudio e transformar em texto, ou utilizar um texto como base para a aplicação emitir um áudio.
+
+DEMO: https://quasarspeechapi.surge.sh
 
 O que usamos nesse projeto:
 * [SpeechSynthesisUtterance](https://developer.mozilla.org/pt-BR/docs/Web/API/SpeechSynthesisUtterance) - A SpeechSynthesisUtteranceinterface da Web Speech API representa uma solicitação de fala. Ele contém o conteúdo que o serviço de fala deve ler e informações sobre como lê-lo (por exemplo, idioma, tom e volume).
