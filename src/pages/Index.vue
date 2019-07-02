@@ -15,20 +15,27 @@
           class="float-right"
           @click="record()"/>
       </div>
-        <div class="col-6 q-pt-md">
-          <q-btn
-          push color="primary"
-          round size="lg" icon="play_arrow"
-          @click="playAudio()"/>
-        </div>
-        <div class="col-12 q-pa-xl">
-          <q-input
-            v-model="text"
-            autogrow
-            label="Texto"
-            clearable
-            outlined/>
-        </div>
+      <div class="col-6 q-pt-md">
+        <q-btn
+        push color="primary"
+        round size="lg" icon="play_arrow"
+        @click="playAudio()"/>
+      </div>
+      <div class="col-12 text-center">
+        <q-toggle
+        v-model="continuous"
+        label="Contínuo"
+        left-label
+      />
+      </div>
+      <div class="col-12 q-pa-xl">
+        <q-input
+          v-model="text"
+          autogrow
+          label="Texto"
+          clearable
+          outlined/>
+      </div>
         <div class="col-12 q-pa-lg text-caption">
           <div class="text-bold">Instruções:</div>
           <div>Escolha seu idioma para que o assistente escreva corretamente sua fala.</div>
@@ -43,6 +50,9 @@
           <div>Caso queira ouvir o texto, basta apertar no botão play <q-btn dense color="primary" round size="xs" icon="play_arrow" />. </div>
         </div>
       </div>
+      <q-page-sticky v-if="btnStop" position="bottom-right" :offset="[15, 18]" style="z-index: 10000">
+        <q-btn fab icon="stop" color="negative" @click="stop()" />
+      </q-page-sticky>
   </q-page>
 </template>
 
@@ -56,7 +66,9 @@ export default {
     return {
       text: '',
       voiceSelect: 'pt-BR',
-      optionsVoice: []
+      optionsVoice: [],
+      continuous: false,
+      btnStop: false
     }
   },
   mounted () {
@@ -82,10 +94,22 @@ export default {
       this.$speechTalk(this.voiceSelect, this.text)
     },
     record () {
-      this.$speechToText(this.voiceSelect)
+      this.btnStop = true
+      this.$speechToText.start(this.voiceSelect, this.continuous)
         .then((suc) => {
-          this.text = suc
+          this.text += ' ' + suc
+          if (this.continuous) {
+            this.record()
+          }
+          // this.btnStop = false
         })
+        .catch(() => {
+          this.btnStop = false
+        })
+    },
+    stop () {
+      this.$speechToText.stop()
+      this.btnStop = false
     }
   }
 }

@@ -45,7 +45,9 @@ module.exports = function (ctx) {
         'QBadge',
         'QImg',
         'QAvatar',
-        'QScrollArea'
+        'QScrollArea',
+        'QPageSticky',
+        'QToggle'
       ],
 
       directives: [
