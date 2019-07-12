@@ -29,7 +29,7 @@ export default async ({ Vue }) => {
   }
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
   const recognition = SpeechRecognition ? new SpeechRecognition() : false
-  
+
   Vue.prototype.$speechToText = {
     start: (lang = 'pt-BR', continuous = false) => {
       return new Promise((resolve, reject) => {
