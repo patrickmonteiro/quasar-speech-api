@@ -54,15 +54,19 @@ export default async ({ Vue }) => {
           // Add the current transcript to the contents of our Note.
           // var noteContent += transcript
           text += transcript
+          console.log('SUCESSO')
           resolve(text)
         }
         recognition.onspeechend = (event) => {
           // if (continuous) {
-          reject(false)
+          // reject(false)
+          Loading.hide()
+          // console.log('end')
           // }
         }
         recognition.nomatch = () => {
-          reject(false)
+          Loading.hide()
+          // reject(false)
         }
         recognition.onend = () => {
           text = ''

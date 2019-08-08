@@ -97,6 +97,7 @@ export default {
       this.btnStop = true
       this.$speechToText.start(this.voiceSelect, this.continuous)
         .then((suc) => {
+          console.log('retornou', suc)
           this.text += ' ' + suc
           if (this.continuous) {
             this.record()
@@ -104,6 +105,7 @@ export default {
           // this.btnStop = false
         })
         .catch(() => {
+          console.log('erro no retorno')
           this.btnStop = false
         })
     },
