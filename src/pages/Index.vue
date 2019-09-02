@@ -101,8 +101,9 @@ export default {
           this.text += ' ' + suc
           if (this.continuous) {
             this.record()
+          } else {
+            this.btnStop = false
           }
-          // this.btnStop = false
         })
         .catch(() => {
           console.log('erro no retorno')

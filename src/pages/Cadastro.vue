@@ -71,7 +71,7 @@ export default {
     //   this.$speechTalk(this.voiceSelect, this.text)
     // },
     record (passo, callback = null) {
-      this.$speechToText()
+      this.$speechToText.start(this.voiceSelect, false)
         .then((suc) => {
           passo(suc)
           if (callback) {
