@@ -29,12 +29,11 @@
       />
       </div>
       <div class="col-12 q-pa-xl">
-        <q-input
-          v-model="text"
-          autogrow
-          label="Texto"
-          clearable
-          outlined/>
+        <q-input filled v-model="text" outlined label="Label">
+          <template v-if="text" v-slot:append>
+            <q-icon name="cancel" @click.stop="text = ''" class="cursor-pointer" />
+          </template>
+        </q-input>
       </div>
         <div class="col-12 q-pa-lg text-caption">
           <div class="text-bold">Instruções:</div>
