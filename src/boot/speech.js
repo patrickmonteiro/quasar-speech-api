@@ -1,4 +1,5 @@
 import { Loading, QSpinnerAudio, QSpinnerBars } from 'quasar'
+
 export default async ({ Vue }) => {
   Vue.prototype.$speechTalk = (lang = 'pt-BR', text = '') => {
     return new Promise((resolve, reject) => {
