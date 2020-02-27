@@ -100,6 +100,14 @@ export default {
       this.$speechTalk(this.voiceSelect, this.text)
     },
     record () {
+      if (!this.$q.platform.is.chrome) {
+        this.$q.notify({
+          message: 'Browser não suportado | Unsupported browser',
+          color: 'negative',
+          icon: 'sentiment_very_dissatisfied'
+        })
+        return false
+      }
       this.btnStop = true
       this.$speechToText.start(this.voiceSelect, this.continuous)
         .then((suc) => {
