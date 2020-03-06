@@ -5,7 +5,7 @@
         outlined v-model="voiceSelect"
         :options="optionsVoice"
         label="Idiomas"
-        class="col-8"
+        class="col-12"
         emit-value
         map-options/>
       <div class="col-6 q-pt-md">
@@ -21,22 +21,19 @@
         round size="lg" icon="play_arrow"
         @click="playAudio()"/>
       </div>
-      <div class="col-8 text-center">
+      <div class="col-12 text-center">
         <q-toggle
         v-model="continuous"
         label="Contínuo"
         left-label
       />
       </div>
-      <div class="col-10 q-pa-xl">
+      <div class="col-12 q-pa-xl">
         <q-input filled v-model="text" outlined label="Label" @blur="n++">
           <template v-if="text" v-slot:append>
             <q-icon name="cancel" @click.stop="text = ''" class="cursor-pointer" />
           </template>
         </q-input>
-        <div ref="vlibras-ref" id="teste">
-            {{ text }}
-        </div>
       </div>
         <div class="col-12 q-pa-lg text-caption">
           <div class="text-bold">Instruções:</div>
@@ -76,9 +73,6 @@ export default {
   },
   mounted () {
     this.setVoices()
-    setTimeout(() => {
-      document.getElementById('btn-acess').click()
-    }, 500)
   },
   methods: {
     setVoices () {
@@ -111,16 +105,11 @@ export default {
       this.btnStop = true
       this.$speechToText.start(this.voiceSelect, this.continuous)
         .then((suc) => {
-          // console.log('retornou', suc)
           this.text += ' ' + suc
           if (this.continuous) {
             this.record()
           } else {
             this.btnStop = false
-            this.setVlibra()
-            // setTimeout(() => {
-            //   this.$refs.vlibras.click()
-            // }, 1500)
           }
         })
         .catch(() => {
@@ -131,18 +120,6 @@ export default {
     stop () {
       this.$speechToText.stop()
       this.btnStop = false
-    },
-    setVlibra () {
-      document.getElementsByClassName('vpw-settings-btn-close')[0].click()
-      setTimeout(() => {
-        document.getElementById('btn-acess').click()
-      }, 500)
-      setTimeout(() => {
-        // this.$refs.vlibras.click()
-        console.log('widget', document.getElementById('teste').getElementsByClassName('vw-text'))
-        document.getElementById('teste').getElementsByClassName('vw-text')[0].click()
-        // console.log('texto', this.$refs.vlibras)
-      }, 1500)
     }
   }
 }
