@@ -35,7 +35,7 @@
           </template>
         </q-input>
         <div ref="vlibras-ref" id="teste">
-            {{ text }}
+            Para cego ver: {{ text }}
         </div>
       </div>
         <div class="col-12 q-pa-lg text-caption">
@@ -118,9 +118,6 @@ export default {
           } else {
             this.btnStop = false
             this.setVlibra()
-            // setTimeout(() => {
-            //   this.$refs.vlibras.click()
-            // }, 1500)
           }
         })
         .catch(() => {
@@ -138,10 +135,8 @@ export default {
         document.getElementById('btn-acess').click()
       }, 500)
       setTimeout(() => {
-        // this.$refs.vlibras.click()
         console.log('widget', document.getElementById('teste').getElementsByClassName('vw-text'))
         document.getElementById('teste').getElementsByClassName('vw-text')[0].click()
-        // console.log('texto', this.$refs.vlibras)
       }, 1500)
     }
   }
