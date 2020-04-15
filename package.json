@@ -12,11 +12,11 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.5.1",
-    "quasar": "^1.9.2"
+    "@quasar/extras": "^1.6.4",
+    "quasar": "^1.9.15"
   },
   "devDependencies": {
-    "@quasar/app": "^1.5.6",
+    "@quasar/app": "^1.7.1",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
     "devtron": "^1.4.0",
