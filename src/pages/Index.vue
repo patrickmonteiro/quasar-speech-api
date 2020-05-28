@@ -1,6 +1,6 @@
 <template>
   <q-page class="container">
-    <div class="row q-col-gutter-md q-pt-md">
+    <div class="row q-col-gutter-md q-pa-xl">
       <q-select
         outlined v-model="voiceSelect"
         :options="optionsVoice"
@@ -28,14 +28,21 @@
         left-label
       />
       </div>
-      <div class="col-12 q-pa-xl">
+      <div class="col-12">
         <q-input filled v-model="text" outlined label="Label" @blur="n++">
           <template v-if="text" v-slot:append>
             <q-icon name="cancel" @click.stop="text = ''" class="cursor-pointer" />
           </template>
         </q-input>
       </div>
-        <div class="col-12 q-pa-lg text-caption">
+      <div class="col-12 text-center">
+         <img
+          alt="Quasar logo"
+          src="statics/podcast.svg"
+          style="width: 190px"
+        >
+      </div>
+      <div class="col-12 q-pa-lg text-caption">
           <div class="text-bold">Instruções:</div>
           <div>Escolha seu idioma para que o assistente escreva corretamente sua fala.</div>
           <div>Aperte no botão microfone
