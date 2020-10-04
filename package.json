@@ -3,7 +3,6 @@
   "version": "0.0.7",
   "description": "A Quasar Framework app",
   "productName": "Quasar Speench Api",
-  "cordovaId": "org.cordova.quasar.app",
   "author": "patryckx",
   "license": "MIT",
   "private": true,
@@ -12,11 +11,11 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.9.5",
-    "quasar": "^1.13.2"
+    "@quasar/extras": "^1.9.7",
+    "quasar": "^1.14.1"
   },
   "devDependencies": {
-    "@quasar/app": "^1.9.6",
+    "@quasar/app": "^2.1.1",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
     "devtron": "^1.4.0",
@@ -33,6 +32,14 @@
     "yarn": ">= 1.6.0"
   },
   "browserslist": [
-    "last 1 version, not dead, ie >= 11"
+    "last 10 Chrome versions",
+    "last 10 Firefox versions",
+    "last 4 Edge versions",
+    "last 7 Safari versions",
+    "last 8 Android versions",
+    "last 8 ChromeAndroid versions",
+    "last 8 FirefoxAndroid versions",
+    "last 10 iOS versions",
+    "last 5 Opera versions"
   ]
 }

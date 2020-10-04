@@ -64,8 +64,6 @@ module.exports = function (ctx) {
       // lang: 'de' // Quasar language
     },
 
-    supportIE: true,
-
     build: {
       scopeHoisting: true,
       // vueRouterMode: 'history',
@@ -83,10 +81,10 @@ module.exports = function (ctx) {
       },
       env: ctx.dev 
       ? {
-        VERSION_QSPEECH: JSON.stringify(require('./package.json').version)
+        VERSION_QSPEECH: require('./package.json').version
       }
       : {
-        VERSION_QSPEECH: JSON.stringify(require('./package.json').version)
+        VERSION_QSPEECH: require('./package.json').version
       },
     },
 
