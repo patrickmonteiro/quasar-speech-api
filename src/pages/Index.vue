@@ -4,7 +4,7 @@
       <q-select
         outlined v-model="voiceSelect"
         :options="optionsVoice"
-        label="Idiomas"
+        :label="$t('languages')"
         class="col-12"
         emit-value
         map-options/>
@@ -24,12 +24,18 @@
       <div class="col-12 text-center">
         <q-toggle
         v-model="continuous"
-        label="Contínuo"
+        :label="$t('continuous')"
         left-label
       />
       </div>
       <div class="col-12">
-        <q-input filled v-model="text" outlined label="Label" @blur="n++">
+        <q-input
+          filled
+          v-model="text"
+          outlined
+          :label="$t('textLabel')"
+          @blur="n++"
+        >
           <template v-if="text" v-slot:append>
             <q-icon name="cancel" @click.stop="text = ''" class="cursor-pointer" />
           </template>
@@ -43,17 +49,18 @@
         >
       </div>
       <div class="col-12 q-pa-lg text-caption">
-          <div class="text-bold">Instruções:</div>
-          <div>Escolha seu idioma para que o assistente escreva corretamente sua fala.</div>
-          <div>Aperte no botão microfone
-             <q-btn dense color="primary" round size="xs" icon="keyboard_voice" />
-             para iniciar a captura de fala, e autorize seu dispositivo a utilizar o microfone.
+          <div class="text-bold" v-text="$t('instructionsTitle')" />
+          <div v-text="$t('instructionsLangDesc01')" />
+          <div>
+            {{ $t('instructionsLangDesc02') }}
+            <q-btn dense color="primary" round size="xs" icon="keyboard_voice" />
+            {{ $t('instructionsLangDesc03') }}
           </div>
           <div>
-            Ao aparecer a tela com a mensagem "Aguardando Áudio" diga a frase que deseja que seja transcrita.<br>
-            Ao finalizar, sua fala aparecerá no campo de Texto.
+            {{ $t('instructionsLangDesc04') }}<br>
+            {{ $t('instructionsLangDesc05') }}
           </div>
-          <div>Caso queira ouvir o texto, basta apertar no botão play <q-btn dense color="primary" round size="xs" icon="play_arrow" />. </div>
+          <div>{{ $t('instructionsLangDesc06') }} <q-btn dense color="primary" round size="xs" icon="play_arrow" />.</div>
         </div>
       </div>
       <q-page-sticky v-if="btnStop" position="bottom-right" :offset="[15, 18]" style="z-index: 10000">
@@ -71,7 +78,7 @@ export default {
   data () {
     return {
       text: '',
-      voiceSelect: 'pt-BR',
+      voiceSelect: this.$t('langValue'),
       optionsVoice: [],
       continuous: false,
       btnStop: false,
@@ -103,14 +110,14 @@ export default {
     record () {
       if (!this.$q.platform.is.chrome) {
         this.$q.notify({
-          message: 'Browser não suportado | Unsupported browser',
+          message: this.$t('unsupportedBrowserDesc'),
           color: 'negative',
           icon: 'sentiment_very_dissatisfied'
         })
         return false
       }
       this.btnStop = true
-      this.$speechToText.start(this.voiceSelect, this.continuous)
+      this.$speechToText.start(this.voiceSelect, this.$t('waitingAudioDesc'), this.continuous)
         .then((suc) => {
           this.text += ' ' + suc
           if (this.continuous) {
@@ -120,7 +127,6 @@ export default {
           }
         })
         .catch(() => {
-          console.log('erro no retorno')
           this.btnStop = false
         })
     },

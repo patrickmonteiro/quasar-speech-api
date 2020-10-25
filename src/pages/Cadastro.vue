@@ -1,32 +1,36 @@
 <template>
   <q-page class="container">
-    <div class="row q-col-gutter-md q-pt-md">
+    <div class="row q-col-gutter-md q-pt-md q-px-md">
       <q-select
         outlined v-model="voiceSelect"
         :options="optionsVoice"
-        label="Idiomas"
+        :label="$t('languages')"
         class="col-12"
         emit-value
         map-options/>
-       <!-- <div class="col-6 q-pt-md">
-       <q-btn
-          push color="primary"
-          round size="lg" icon="keyboard_voice"
-          class="float-right"
-          @click="record()"/>
-      </div> -->
         <div class="col-12 q-pt-md text-center">
           <q-btn
           push color="primary"
-           size="lg" icon="play_arrow" label="Iniciar Cadastro"
+           size="lg" icon="play_arrow" :label="$t('startRegistrationButton')"
           @click="iniciarCadastroAudio()"/>
         </div>
     </div>
     <div class="row q-pt-md q-px-md q-col-gutter-md">
-      <q-input outlined v-model="form.nome" label="Nome Completo" class="col-12"
-        ref="nome"/>
-      <q-input outlined v-model="form.idade" label="Idade" class="col-12"
-        ref="idade" type="tek"/>
+      <q-input
+        outlined
+        v-model="form.nome"
+        :label="$t('fullNameLabel')"
+        class="col-12"
+        ref="nome"
+      />
+      <q-input
+        outlined
+        v-model="form.idade"
+        :label="$t('ageLabel')"
+        class="col-12"
+        ref="idade"
+        type="tek"
+      />
     </div>
   </q-page>
 </template>
@@ -43,7 +47,7 @@ export default {
         nome: '',
         idade: ''
       },
-      voiceSelect: 'pt-BR',
+      voiceSelect: this.$t('langValue'),
       optionsVoice: []
     }
   },
@@ -52,7 +56,6 @@ export default {
   },
   methods: {
     setVoices () {
-      console.log(this.optionsVoice.length)
       let id = setInterval(() => {
         if (this.optionsVoice.length === 0) {
           this.voicesList()
@@ -67,9 +70,6 @@ export default {
         label: voice.name, value: voice.lang
       }))
     },
-    // playAudio () {
-    //   this.$speechTalk(this.voiceSelect, this.text)
-    // },
     record (passo, callback = null) {
       this.$speechToText.start(this.voiceSelect, false)
         .then((suc) => {
@@ -80,25 +80,25 @@ export default {
         })
     },
     iniciarCadastroAudio () {
-      this.$speechTalk(this.voiceSelect, 'Olá, iniciaremos seu cadastro.')
+      this.$speechTalk(this.voiceSelect, this.$t('stepRegistrationLangDesc01'))
         .then(() => {
           this.segundoPasso()
         })
     },
     segundoPasso () {
-      this.$speechTalk(this.voiceSelect, 'Qual o seu nome ?.')
+      this.$speechTalk(this.voiceSelect, this.$t('stepRegistrationLangDesc02'))
         .then(() => {
           this.record(this.setFormNome, this.terceiroPasso)
         })
     },
     terceiroPasso () {
-      this.$speechTalk(this.voiceSelect, 'Qual sua idade ?.')
+      this.$speechTalk(this.voiceSelect, this.$t('stepRegistrationLangDesc03'))
         .then(() => {
           this.record(this.setFormIdade, this.finalizar)
         })
     },
     finalizar () {
-      this.$speechTalk(this.voiceSelect, 'Obrigado por realizar seu cadastro!')
+      this.$speechTalk(this.voiceSelect, this.$t('stepRegistrationLangDesc04'))
     },
     setFormNome (nome) {
       this.form.nome = nome
