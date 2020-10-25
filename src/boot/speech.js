@@ -32,7 +32,7 @@ export default async ({ Vue }) => {
   const recognition = SpeechRecognition ? new SpeechRecognition() : false
 
   Vue.prototype.$speechToText = {
-    start: (lang = 'pt-BR', continuous = false) => {
+    start: (lang = 'pt-BR', message = '', continuous = false) => {
       return new Promise((resolve, reject) => {
         let text = ''
         setTimeout(() => {
@@ -40,7 +40,7 @@ export default async ({ Vue }) => {
             // delay: 400,
             spinner: QSpinnerBars, // ms,
             backgroundColor: 'primary',
-            message: 'Aguardando áudio',
+            message,
             messageColor: 'white'
           })
           recognition.lang = lang // this.voiceSelect
