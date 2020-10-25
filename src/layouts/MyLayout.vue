@@ -16,7 +16,27 @@
           Quasar Speech
         </q-toolbar-title>
 
-        <div>Versão: {{ version_qspeech }}</div>
+        <div class="q-mx-md">
+          <q-select
+            v-model="lang"
+            :options="langOptions"
+            color="grey-1"
+            label-color="grey-1"
+            dark
+            :label="$t('langSelect')"
+            standout
+            dense
+            emit-value
+            borderless
+            map-options
+            options-dense
+            style="min-width: 150px"
+          />
+        </div>
+
+        <div>
+          {{ $t('version') }}: {{ version_qspeech }}
+        </div>
       </q-toolbar>
     </q-header>
 
@@ -29,14 +49,14 @@
     >
     <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
       <q-list>
-        <q-item-label header>Essential Links</q-item-label>
+        <q-item-label header v-text="$t('essentialLinksDesc')" />
         <q-item clickable to="/" exact>
           <q-item-section avatar>
             <q-icon name="home" />
           </q-item-section>
           <q-item-section>
-            <q-item-label>Home</q-item-label>
-            <q-item-label caption></q-item-label>
+            <q-item-label v-text="$t('menuHomeText')" />
+            <q-item-label v-text="$t('menuHomeDesc')" caption />
           </q-item-section>
         </q-item>
         <q-item clickable to="/cadastro">
@@ -44,8 +64,8 @@
             <q-icon name="settings_voice" />
           </q-item-section>
           <q-item-section>
-            <q-item-label>Cadastro Speech</q-item-label>
-            <q-item-label caption>cadastro por voz</q-item-label>
+            <q-item-label v-text="$t('menuRegistrationText')" />
+            <q-item-label v-text="$t('menuRegistrationDesc')" caption />
           </q-item-section>
         </q-item>
         <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
@@ -53,8 +73,8 @@
             <q-icon name="school" />
           </q-item-section>
           <q-item-section>
-            <q-item-label>Conheça o Quasar Framework</q-item-label>
-            <q-item-label caption>quasar.dev</q-item-label>
+            <q-item-label v-text="$t('menuQuasarText')" />
+            <q-item-label v-text="$t('menuQuasarDesc')" caption />
           </q-item-section>
         </q-item>
       </q-list>
@@ -91,7 +111,17 @@ export default {
   data () {
     return {
       leftDrawerOpen: this.$q.platform.is.desktop,
-      version_qspeech: process.env.VERSION_QSPEECH
+      version_qspeech: process.env.VERSION_QSPEECH,
+      lang: this.$i18n.locale,
+      langOptions: [
+        { value: 'en-US', label: 'English (United States)' },
+        { value: 'pt-BR', label: 'Português (Brasil)' }
+      ]
+    }
+  },
+  watch: {
+    lang (lang) {
+      this.$i18n.locale = lang
     }
   },
   methods: {
