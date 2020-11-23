@@ -5,7 +5,8 @@ module.exports = function (ctx) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     boot: [
-      'speech'
+      'speech',
+      'i18n'
     ],
 
     css: [
@@ -79,13 +80,9 @@ module.exports = function (ctx) {
           exclude: /node_modules/
         })
       },
-      env: ctx.dev 
-      ? {
+      env: {
         VERSION_QSPEECH: require('./package.json').version
       }
-      : {
-        VERSION_QSPEECH: require('./package.json').version
-      },
     },
 
     devServer: {
@@ -151,8 +148,14 @@ module.exports = function (ctx) {
       // bundler: 'builder', // or 'packager'
 
       extendWebpack (cfg) {
-        // do something with Electron main process Webpack cfg
-        // chainWebpack also available besides this extendWebpack
+        cfg.module.rules.push({
+          resourceQuery: /blockType=i18n/,
+          type: 'javascript/auto',
+          use: [
+            { loader: '@kazupon/vue-i18n-loader' },
+            { loader: 'yaml-loader' }
+          ]
+        })
       },
 
       packager: {
