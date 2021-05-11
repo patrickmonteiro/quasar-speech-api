@@ -1067,10 +1067,10 @@
     core-js "^3.6.5"
     core-js-compat "^3.6.5"
 
-"@quasar/extras@^1.9.10":
-  version "1.9.10"
-  resolved "https://registry.yarnpkg.com/@quasar/extras/-/extras-1.9.10.tgz#e0d8f98a7234d8bd996a7afbdba9763d4e331788"
-  integrity sha512-pVM2lLiX2vHhibL4VUCjAfYhhYtQLDLYccq/ee6PdpyJ394lJQSkFnnGntcmpQk4QPcgIQ8GZSVpsUd1qgabaw==
+"@quasar/extras@^1.9.7":
+  version "1.10.4"
+  resolved "https://registry.yarnpkg.com/@quasar/extras/-/extras-1.10.4.tgz#904ea87a3ee294bc09985651382501c564ca4699"
+  integrity sha512-FIXvYZPTKFjBmMb9CNMkEqXTgNppixRLWdaZKKb1qn/CScn+jipPzMBOwCfAFwsNPeAGXTwFT1/xzhLWIbwzAw==
 
 "@quasar/fastclick@1.1.4":
   version "1.1.4"
@@ -5590,9 +5590,9 @@ lodash.uniq@^4.5.0:
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
 lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.5:
-  version "4.17.20"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
-  integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 log-update@4.0.0:
   version "4.0.0"
@@ -7202,10 +7202,10 @@ qs@6.7.0:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
 
-quasar@^1.14.5:
-  version "1.14.5"
-  resolved "https://registry.yarnpkg.com/quasar/-/quasar-1.14.5.tgz#dd432ea9b0d7d7e7cedf12e2d8a20d35e944d4e9"
-  integrity sha512-K/rYbL5U8Wel31Lqr6VIJcWNXIoa4DSfNQ56Yrw+H/AKSmWMsyDyQcPYX9qMjhaSvEd/HOIIBdfOxx+eO6weAA==
+quasar@^1.14.1:
+  version "1.15.13"
+  resolved "https://registry.yarnpkg.com/quasar/-/quasar-1.15.13.tgz#04ca97bcdcd6fc8117e306216bf85af7233116f9"
+  integrity sha512-71h+IwSC5NocvinNHaxXqRWvIyx4DClcwi4iANHqmgYcpXPwWEgGAiE8lSaZMGyTkUC+e/yshRj57s6RvhoHHw==
 
 query-string@^4.1.0:
   version "4.3.4"
@@ -8844,12 +8844,6 @@ vue-hot-reload-api@^2.3.0:
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
   integrity sha512-BXq3jwIagosjgNVae6tkHzzIk6a8MHFtzAdwhnV5VlvPTFxDCvIttgSiHWjdGoTJvXtmRu5HacExfdarRcFhog==
 
-<<<<<<< HEAD
-vue-loader@15.9.5:
-  version "15.9.5"
-  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-15.9.5.tgz#7a960dc420a3439deaacdda038fdcdbf7c432706"
-  integrity sha512-oeMOs2b5o5gRqkxfds10bCx6JeXYTwivRgbb8hzOrcThD2z1+GqEKE3EX9A2SGbsYDf4rXwRg6D5n1w0jO5SwA==
-=======
 vue-i18n@^8.22.1:
   version "8.22.1"
   resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-8.22.1.tgz#b9dd098a17e1f5adb91bdf9611f0385310da7cb1"
@@ -8862,11 +8856,10 @@ vue-i18n@^9.0.0-beta.1:
   dependencies:
     source-map "^0.6.1"
 
-vue-loader@15.9.3:
-  version "15.9.3"
-  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-15.9.3.tgz#0de35d9e555d3ed53969516cac5ce25531299dda"
-  integrity sha512-Y67VnGGgVLH5Voostx8JBZgPQTlDQeOVBLOEsjc2cXbCYBKexSKEpOA56x0YZofoDOTszrLnIShyOX1p9uCEHA==
->>>>>>> fdac972a801327fbbf1ddc6de9ec0d6938ff7f8b
+vue-loader@15.9.5:
+  version "15.9.5"
+  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-15.9.5.tgz#7a960dc420a3439deaacdda038fdcdbf7c432706"
+  integrity sha512-oeMOs2b5o5gRqkxfds10bCx6JeXYTwivRgbb8hzOrcThD2z1+GqEKE3EX9A2SGbsYDf4rXwRg6D5n1w0jO5SwA==
   dependencies:
     "@vue/component-compiler-utils" "^3.1.0"
     hash-sum "^1.0.2"
